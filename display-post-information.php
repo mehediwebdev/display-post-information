@@ -30,7 +30,7 @@ if( ! class_exists( 'DPI_DISPLAY_POST_INFORMATION' ) ){
         $wpi_wp_post_info_settings = new WPI_WP_Post_Info_Settings();
 
         require_once( DISPLAY_POST_INFORMATION_PATH . 'public/class.wp-post-info-views.php' );
-        $dpi_display_post_info_views = new DPI_DISPLAY_Post_Info_Views();
+        $dpi_display_post_info_views = new DPI_Display_Post_Info_Views();
     }
     public function define_constant(){
        define( 'DISPLAY_POST_INFORMATION_PATH', plugin_dir_path( __FILE__ ) );

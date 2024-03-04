@@ -1,6 +1,6 @@
 <?php
-if (!class_exists('DPI_DISPLAY_Post_Info_Views')) {
-    class DPI_DISPLAY_Post_Info_Views {
+if (!class_exists('DPI_Display_Post_Info_Views')) {
+    class DPI_Display_Post_Info_Views {
         public static $options;
 
         public function __construct() {
