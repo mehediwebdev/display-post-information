@@ -1,10 +1,10 @@
 <?php
-if (!class_exists('WPI_WP_Post_Info_Views')) {
-    class WPI_WP_Post_Info_Views {
+if (!class_exists('DPI_DISPLAY_Post_Info_Views')) {
+    class DPI_DISPLAY_Post_Info_Views {
         public static $options;
 
         public function __construct() {
-            self::$options = get_option('wp_post_information_options');
+            self::$options = get_option('display_post_information_options');
             add_filter('the_content', array($this, 'wp_post_info_views'));
         }
 
@@ -29,7 +29,7 @@ if (!class_exists('WPI_WP_Post_Info_Views')) {
                 $wordCount = str_word_count(strip_tags($content));               
                 $html .= sprintf(
                     // translators: %s is replaced with the number of words
-                    __('This post has %s Words.<br>', 'wp-post-information'),   
+                    __('This post has %s Words.<br>', 'display-post-information'),   
                     esc_html($wordCount)
                 );
             }
@@ -37,7 +37,7 @@ if (!class_exists('WPI_WP_Post_Info_Views')) {
             if (isset(self::$options['wpi_display_character_count']) && self::$options['wpi_display_character_count'] == '1') {
                 $html .= sprintf(
                      // translators: %s is replaced with the number of characters
-                    __('This post has %s characters.<br>', 'wp-post-information'),
+                    __('This post has %s characters.<br>', 'display-post-information'),
                     esc_html(strlen(strip_tags($content)))
                 );
             }
@@ -45,7 +45,7 @@ if (!class_exists('WPI_WP_Post_Info_Views')) {
                 if ($wordCount > 0) {                   
                     $html .= sprintf(
                         // translators: %s is replaced with the approximate reading time in minutes
-                        __('This post will take about %s min(s) to read.', 'wp-post-information'),
+                        __('This post will take about %s min(s) to read.', 'display-post-information'),
                         esc_html(round($wordCount / 225))
                     );
                 }

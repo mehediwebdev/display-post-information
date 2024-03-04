@@ -6,64 +6,64 @@ if (!class_exists('WPI_WP_Post_Info_Settings')) {
 
         public function __construct()
         {
-            self::$options = get_option('wp_post_information_options');
+            self::$options = get_option('display_post_information_options');
             add_action('admin_init', array($this, 'admin_init_fields'));
         }
 
         public function admin_init_fields()
         {
             register_setting(
-                'wp_post_information_options_group',
-                'wp_post_information_options',
+                'display_post_information_options_group',
+                'display_post_information_options',
                 array($this, 'wpi_resgister_settings_validation_callback')
             );
 
             add_settings_section(
-                'wp_post_information_main_section', // ID
-                esc_html__('How Does It work', 'wp-post-information'), // Title
+                'display_post_information_main_section', // ID
+                esc_html__('How Does It work', 'display-post-information'), // Title
                 null, //array($this, 'wpi_main_section_callback'),   // Callback
-                'wp-post-information-settings' // Page
+                'display-post-information-settings' // Page
             );
 
 
             add_settings_field(
                 'wpi_display_location',
-                esc_html__('Display Location', 'wp-post-information'),
+                esc_html__('Display Location', 'display-post-information'),
                 array($this, 'wpi_display_location_callback'),
-                'wp-post-information-settings',
-                'wp_post_information_main_section'
+                'display-post-information-settings',
+                'display_post_information_main_section'
             );
 
             add_settings_field(
                 'wpi_display_headline',
-                esc_html__('Display Headline', 'wp-post-information'),
+                esc_html__('Display Headline', 'display-post-information'),
                 array($this, 'wpi_display_headline_callback'),
-                'wp-post-information-settings',
-                'wp_post_information_main_section'
+                'display-post-information-settings',
+                'display_post_information_main_section'
             );
 
             add_settings_field(
                 'wpi_display_word_count',
-                esc_html__('Display Word Count', 'wp-post-information'),
+                esc_html__('Display Word Count', 'display-post-information'),
                 array($this, 'wpi_display_word_count_callback'),
-                'wp-post-information-settings',
-                'wp_post_information_main_section'
+                'display-post-information-settings',
+                'display_post_information_main_section'
             );
 
             add_settings_field(
                 'wpi_display_character_count',
-                esc_html__('Display Character Count', 'wp-post-information'),
+                esc_html__('Display Character Count', 'display-post-information'),
                 array($this, 'wpi_display_character_count_callback'),
-                'wp-post-information-settings',
-                'wp_post_information_main_section'
+                'display-post-information-settings',
+                'display_post_information_main_section'
             );
 
             add_settings_field(
                 'wpi_display_read_time',
-                esc_html__('Display Read Time', 'wp-post-information'),
+                esc_html__('Display Read Time', 'display-post-information'),
                 array($this, 'wpi_display_read_time_callback'),
-                'wp-post-information-settings',
-                'wp_post_information_main_section'
+                'display-post-information-settings',
+                'display_post_information_main_section'
             );
         }
 
@@ -74,12 +74,12 @@ if (!class_exists('WPI_WP_Post_Info_Settings')) {
             ?>
             <select
                     id="wpi_display_location"
-                    name="wp_post_information_options[wpi_display_location]">
+                    name="display_post_information_options[wpi_display_location]">
                 <option
                         value="0"
-                    <?php isset(self::$options['wpi_display_location']) ? selected('0', self::$options['wpi_display_location'], true) : ''; ?>><?php esc_html_e('Beginning of post', 'wp-post-information'); ?></option>
+                    <?php isset(self::$options['wpi_display_location']) ? selected('0', self::$options['wpi_display_location'], true) : ''; ?>><?php esc_html_e('Beginning of post', 'display-post-information'); ?></option>
                 <option value="1"
-                    <?php isset(self::$options['wpi_display_location']) ? selected('1', self::$options['wpi_display_location'], true) : ''; ?>><?php esc_html_e('End of post', 'wp-post-information'); ?></option>
+                    <?php isset(self::$options['wpi_display_location']) ? selected('1', self::$options['wpi_display_location'], true) : ''; ?>><?php esc_html_e('End of post', 'display-post-information'); ?></option>
             </select>
             <?php
         }
@@ -89,7 +89,7 @@ if (!class_exists('WPI_WP_Post_Info_Settings')) {
             ?>
             <input
                     type="text"
-                    name="wp_post_information_options[wpi_display_headline]"
+                    name="display_post_information_options[wpi_display_headline]"
                     id="wpi_display_headline"
                     value="<?php echo isset(self::$options['wpi_display_headline']) ? esc_attr(self::$options['wpi_display_headline']) : ''; ?>"
             />
@@ -101,7 +101,7 @@ if (!class_exists('WPI_WP_Post_Info_Settings')) {
             ?>
             <input
                     type="checkbox"
-                    name="wp_post_information_options[wpi_display_word_count]"
+                    name="display_post_information_options[wpi_display_word_count]"
                     id="wpi_display_word_count"
                     value="1"
                 <?php
@@ -110,7 +110,7 @@ if (!class_exists('WPI_WP_Post_Info_Settings')) {
                 }
                 ?>
             />
-            <label for="wpi_display_word_count"><?php esc_html_e('Yes/No', 'wp-post-information'); ?></label>
+            <label for="wpi_display_word_count"><?php esc_html_e('Yes/No', 'display-post-information'); ?></label>
             <?php
         }
 
@@ -119,7 +119,7 @@ if (!class_exists('WPI_WP_Post_Info_Settings')) {
             ?>
             <input
                     type="checkbox"
-                    name="wp_post_information_options[wpi_display_character_count]"
+                    name="display_post_information_options[wpi_display_character_count]"
                     id="wpi_display_character_count"
                     value="1"
                 <?php
@@ -128,7 +128,7 @@ if (!class_exists('WPI_WP_Post_Info_Settings')) {
                 }
                 ?>
             />
-            <label for="wpi_display_character_count"><?php esc_html_e('Yes/No', 'wp-post-information'); ?></label>
+            <label for="wpi_display_character_count"><?php esc_html_e('Yes/No', 'display-post-information'); ?></label>
             <?php
         }
 
@@ -137,7 +137,7 @@ if (!class_exists('WPI_WP_Post_Info_Settings')) {
             ?>
             <input
                     type="checkbox"
-                    name="wp_post_information_options[wpi_display_read_time]"
+                    name="display_post_information_options[wpi_display_read_time]"
                     id="wpi_display_read_time"
                     value="1"
                 <?php
@@ -146,7 +146,7 @@ if (!class_exists('WPI_WP_Post_Info_Settings')) {
                 }
                 ?>
             />
-            <label for="wpi_display_read_time"><?php esc_html_e('Yes/No', 'wp-post-information'); ?></label>
+            <label for="wpi_display_read_time"><?php esc_html_e('Yes/No', 'display-post-information'); ?></label>
             <?php
         }
 
